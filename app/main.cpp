@@ -1,27 +1,25 @@
 #include <iostream>
-#include <iomanip>  // Dodato za setw i setfill
+#include <format>
+#include <iomanip>
 #include "app.h"
 
+using vsite::oop::v2::color;
+
 int main() {
-    using namespace vsite::oop::v2;
+	double r, g, b;
+	std::cin >> r;
+	std::cin >> g;
+	std::cin >> b;
+	color c;
 
-    color c;
-    double r, g, b;
+	c.set_red(r);
+	c.set_green(g);
+	c.set_blue(b);
 
-    std::cout << "Enter red, green, and blue components (0.0 - 1.0):\n";
-    std::cout << "Red: ";
-    std::cin >> r;
-    std::cout << "Green: ";
-    std::cin >> g;
-    std::cout << "Blue: ";
-    std::cin >> b;
+	std::cout << "Crvena boja: " << c.get_red() << "\n";
+	std::cout << "Zelena boja: " << c.get_green() << "\n";
+	std::cout << "Plava boja: " << c.get_blue() << "\n";
 
-    c.set_red(r);
-    c.set_green(g);
-    c.set_blue(b);
+	std::cout << "Boja u hexadecimalnom  zapisu je 0x" << vsite::oop::v2::to_hex(c.get_color_ref());
 
-    uint32_t colorValue = c.get_color_ref();
-    std::cout << "RGB color in hexadecimal: 0x" << std::hex << std::setw(6) << std::setfill('0') << colorValue << std::endl;
-
-    return 0;
 }
