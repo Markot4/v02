@@ -1,25 +1,22 @@
 #include <iostream>
-#include <format>
-#include <iomanip>
+#include <string>
 #include "app.h"
+int main()
+{
+	vsite::oop::v2::color boja;
 
-using vsite::oop::v2::color;
+	double red, green, blue;
+	std::cout << "Unesite vrijednost crvene(0.0-1.0): ";
+	std::cin >> red;
+	std::cout << "Unesite vrijednost zelene(0.0-1.0): ";
+	std::cin >> green;
+	std::cout << "Unesite vrijednost plave(0.0-1.0): ";
+	std::cin >> blue;
 
-int main() {
-	double r, g, b;
-	std::cin >> r;
-	std::cin >> g;
-	std::cin >> b;
-	color c;
+	boja.set_red(red);
+	boja.set_green(green);
+	boja.set_blue(blue);
 
-	c.set_red(r);
-	c.set_green(g);
-	c.set_blue(b);
-
-	std::cout << "Crvena boja: " << c.get_red() << "\n";
-	std::cout << "Zelena boja: " << c.get_green() << "\n";
-	std::cout << "Plava boja: " << c.get_blue() << "\n";
-
-	std::cout << "Boja u hexadecimalnom  zapisu je 0x" << vsite::oop::v2::to_hex(c.get_color_ref());
-
+	std::cout << "RGB vrijednost => #" << vsite::oop::v2::to_hex(boja.get_color_ref());
+	return 0;
 }
